@@ -9,3 +9,4 @@ services:
     - HL_USER_PASSWORD=compass
     ports:
       - "4444:4444"
+      - "22:22"

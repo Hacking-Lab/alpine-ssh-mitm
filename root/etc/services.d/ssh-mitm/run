@@ -1,3 +1,8 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 
-exec ssh-proxy --lport=4444 --rhost=localhost --rport=22 localhost
+if [ ! -f /hostkey ]; then
+    echo "creating new hostkey"
+    /usr/bin/ssh-keygen -t rsa -f /hostkey -q -N ""
+fi
+
+exec ssh-mitm --host-key /hostkey ${SSH_MITM_ARGS[@]}

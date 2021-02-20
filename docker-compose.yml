@@ -1,12 +1,14 @@
 version: '2'
 
 services:
-  ssh-mitm: 
-    image: hackinglab/alpine-ssh-mitm:3.2
+  ssh-mitm:
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
     - AUTHOR=e1
     - HL_USER_USERNAME=hacker
     - HL_USER_PASSWORD=compass
+    - SSH_MITM_ARGS=--remote-host 192.168.0.1
     ports:
-      - "4444:4444"
-      - "22:22"
+      - "10022:10022"

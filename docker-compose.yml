@@ -8,7 +8,7 @@ services:
     environment:
     - SSH_MITM_ARGS=--remote-host openssh-server
     ports:
-      - "22:10022"
+      - "10022:10022"
 
   openssh-server:
     image: hackinglab/alpine-openssh-server
@@ -16,4 +16,7 @@ services:
     - AUTHOR=e1
     - HL_USER_USERNAME=hacker
     - HL_USER_PASSWORD=compass
+    ports:
+      - "22:22"
+    
 
